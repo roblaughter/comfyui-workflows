@@ -1,0 +1,975 @@
+{
+  "last_node_id": 73,
+  "last_link_id": 257,
+  "nodes": [
+    {
+      "id": 70,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        425,
+        600
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            257
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            255,
+            256
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            250
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "RobMixCosXL B.safetensors"
+      ]
+    },
+    {
+      "id": 30,
+      "type": "FreeU_V2",
+      "pos": [
+        425,
+        750
+      ],
+      "size": {
+        "0": 315,
+        "1": 130
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 257
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            205
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FreeU_V2"
+      },
+      "widgets_values": [
+        1.05,
+        1.08,
+        0.9500000000000001,
+        0.88
+      ]
+    },
+    {
+      "id": 55,
+      "type": "SelfAttentionGuidance",
+      "pos": [
+        425,
+        925
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 205
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            206
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SelfAttentionGuidance"
+      },
+      "widgets_values": [
+        0.8,
+        4
+      ]
+    },
+    {
+      "id": 32,
+      "type": "RescaleCFG",
+      "pos": [
+        425,
+        1050
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 206
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            243,
+            244
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RescaleCFG"
+      },
+      "widgets_values": [
+        0.75
+      ]
+    },
+    {
+      "id": 10,
+      "type": "EmptyLatentImage",
+      "pos": [
+        900,
+        975
+      ],
+      "size": {
+        "0": 320,
+        "1": 110
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 14,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 15,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            6
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        512,
+        512,
+        1
+      ]
+    },
+    {
+      "id": 60,
+      "type": "ModelSamplingContinuousEDM",
+      "pos": [
+        1150,
+        600
+      ],
+      "size": {
+        "0": 300,
+        "1": 106
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 243
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            219
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ModelSamplingContinuousEDM"
+      },
+      "widgets_values": [
+        "v_prediction",
+        240,
+        0.002
+      ]
+    },
+    {
+      "id": 61,
+      "type": "ModelSamplingContinuousEDM",
+      "pos": [
+        1475,
+        600
+      ],
+      "size": {
+        "0": 300,
+        "1": 106
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 244
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            220
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ModelSamplingContinuousEDM"
+      },
+      "widgets_values": [
+        "v_prediction",
+        60,
+        0.001
+      ]
+    },
+    {
+      "id": 26,
+      "type": "NNLatentUpscale",
+      "pos": [
+        1850,
+        875
+      ],
+      "size": {
+        "0": 300,
+        "1": 100
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "link": 34
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            35
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "NNLatentUpscale"
+      },
+      "widgets_values": [
+        "SDXL",
+        1.5
+      ]
+    },
+    {
+      "id": 6,
+      "type": "KSampler",
+      "pos": [
+        1150,
+        750
+      ],
+      "size": {
+        "0": 300,
+        "1": 450
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 219
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 198
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 204
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 6
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "link": 11,
+          "widget": {
+            "name": "seed"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            34
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        211707255732970,
+        "randomize",
+        40,
+        3,
+        "dpmpp_3m_sde_gpu",
+        "karras",
+        1
+      ]
+    },
+    {
+      "id": 29,
+      "type": "KSampler",
+      "pos": [
+        1475,
+        750
+      ],
+      "size": {
+        "0": 300,
+        "1": 450
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 220
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 36
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 37
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 35
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "link": 42,
+          "widget": {
+            "name": "seed"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            229
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        211707255732970,
+        "randomize",
+        40,
+        3,
+        "dpmpp_3m_sde_gpu",
+        "karras",
+        0.4
+      ]
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [
+        775,
+        750
+      ],
+      "size": {
+        "0": 350,
+        "1": 125
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 256
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            37,
+            204
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Negative",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "painting, illustration, cartoon, anime"
+      ]
+    },
+    {
+      "id": 66,
+      "type": "workflow/Upscale Output",
+      "pos": [
+        1800,
+        750
+      ],
+      "size": {
+        "0": 275,
+        "1": 450
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 229
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 250
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [],
+          "shape": 3
+        }
+      ],
+      "properties": {}
+    },
+    {
+      "id": 1,
+      "type": "CLIPTextEncode",
+      "pos": [
+        775,
+        600
+      ],
+      "size": {
+        "0": 350,
+        "1": 100
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 255
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            36,
+            198
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Positive",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "A portrait photo of an old baptist preacher in a dusty church, evening light casting shadows"
+      ]
+    },
+    {
+      "id": 17,
+      "type": "SDXLResolutionPresets",
+      "pos": [
+        775,
+        925
+      ],
+      "size": {
+        "0": 350,
+        "1": 102
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            14
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            15
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "title": "Resolution",
+      "properties": {
+        "Node name for S&R": "SDXLResolutionPresets"
+      },
+      "widgets_values": [
+        "Portrait (1152x896)",
+        "Vertical"
+      ]
+    },
+    {
+      "id": 15,
+      "type": "PrimitiveNode",
+      "pos": [
+        775,
+        1075
+      ],
+      "size": {
+        "0": 200,
+        "1": 75
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            11,
+            42
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "seed"
+          }
+        }
+      ],
+      "title": "Seed",
+      "properties": {
+        "Run widget replace on values": false
+      },
+      "widgets_values": [
+        211707255732970,
+        "fixed"
+      ]
+    }
+  ],
+  "links": [
+    [
+      6,
+      10,
+      0,
+      6,
+      3,
+      "LATENT"
+    ],
+    [
+      11,
+      15,
+      0,
+      6,
+      4,
+      "INT"
+    ],
+    [
+      14,
+      17,
+      0,
+      10,
+      0,
+      "INT"
+    ],
+    [
+      15,
+      17,
+      1,
+      10,
+      1,
+      "INT"
+    ],
+    [
+      34,
+      6,
+      0,
+      26,
+      0,
+      "LATENT"
+    ],
+    [
+      35,
+      26,
+      0,
+      29,
+      3,
+      "LATENT"
+    ],
+    [
+      36,
+      1,
+      0,
+      29,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      37,
+      3,
+      0,
+      29,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      42,
+      15,
+      0,
+      29,
+      4,
+      "INT"
+    ],
+    [
+      198,
+      1,
+      0,
+      6,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      204,
+      3,
+      0,
+      6,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      205,
+      30,
+      0,
+      55,
+      0,
+      "MODEL"
+    ],
+    [
+      206,
+      55,
+      0,
+      32,
+      0,
+      "MODEL"
+    ],
+    [
+      219,
+      60,
+      0,
+      6,
+      0,
+      "MODEL"
+    ],
+    [
+      220,
+      61,
+      0,
+      29,
+      0,
+      "MODEL"
+    ],
+    [
+      229,
+      29,
+      0,
+      66,
+      0,
+      "LATENT"
+    ],
+    [
+      243,
+      32,
+      0,
+      60,
+      0,
+      "MODEL"
+    ],
+    [
+      244,
+      32,
+      0,
+      61,
+      0,
+      "MODEL"
+    ],
+    [
+      250,
+      70,
+      2,
+      66,
+      1,
+      "VAE"
+    ],
+    [
+      255,
+      70,
+      1,
+      1,
+      0,
+      "CLIP"
+    ],
+    [
+      256,
+      70,
+      1,
+      3,
+      0,
+      "CLIP"
+    ],
+    [
+      257,
+      70,
+      0,
+      30,
+      0,
+      "MODEL"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "groupNodes": {
+      "Upscale Output": {
+        "nodes": [
+          {
+            "type": "VAEDecode",
+            "pos": [
+              1900,
+              175
+            ],
+            "size": {
+              "0": 210,
+              "1": 46
+            },
+            "flags": {},
+            "order": 21,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "samples",
+                "type": "LATENT",
+                "link": null
+              },
+              {
+                "name": "vae",
+                "type": "VAE",
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "IMAGE",
+                "type": "IMAGE",
+                "links": [],
+                "shape": 3,
+                "slot_index": 0
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "VAEDecode"
+            },
+            "index": 0
+          },
+          {
+            "type": "PreviewImage",
+            "pos": [
+              1900,
+              275
+            ],
+            "size": {
+              "0": 210,
+              "1": 250
+            },
+            "flags": {},
+            "order": 22,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "images",
+                "type": "IMAGE",
+                "link": null
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "PreviewImage"
+            },
+            "index": 1
+          }
+        ],
+        "links": [
+          [
+            null,
+            0,
+            0,
+            0,
+            29,
+            "LATENT"
+          ],
+          [
+            null,
+            0,
+            0,
+            1,
+            23,
+            "VAE"
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            64,
+            "IMAGE"
+          ]
+        ],
+        "external": [
+          [
+            0,
+            0,
+            "IMAGE"
+          ]
+        ]
+      }
+    }
+  },
+  "version": 0.4
+}

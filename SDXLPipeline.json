@@ -1,0 +1,1373 @@
+{
+  "last_node_id": 79,
+  "last_link_id": 255,
+  "nodes": [
+    {
+      "id": 17,
+      "type": "SDXLResolutionPresets",
+      "pos": [
+        200,
+        1425
+      ],
+      "size": {
+        "0": 350,
+        "1": 102
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            14
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            15
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "title": "Resolution",
+      "properties": {
+        "Node name for S&R": "SDXLResolutionPresets"
+      },
+      "widgets_values": [
+        "Photo (1216x832)",
+        "Horizontal"
+      ]
+    },
+    {
+      "id": 55,
+      "type": "SelfAttentionGuidance",
+      "pos": [
+        1125,
+        1175
+      ],
+      "size": {
+        "0": 325,
+        "1": 82
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 205
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            208
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SelfAttentionGuidance"
+      },
+      "widgets_values": [
+        0.5,
+        2
+      ]
+    },
+    {
+      "id": 37,
+      "type": "workflow/Output",
+      "pos": [
+        1600,
+        1600
+      ],
+      "size": {
+        "0": 325,
+        "1": 350
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 215
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 237
+        }
+      ],
+      "title": "First Pass Preview",
+      "properties": {}
+    },
+    {
+      "id": 64,
+      "type": "workflow/Output",
+      "pos": [
+        2025,
+        1600
+      ],
+      "size": {
+        "0": 325,
+        "1": 350
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 232
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 238
+        }
+      ],
+      "properties": {}
+    },
+    {
+      "id": 10,
+      "type": "EmptyLatentImage",
+      "pos": [
+        675,
+        1500
+      ],
+      "size": {
+        "0": 320,
+        "1": 110
+      },
+      "flags": {
+        "collapsed": true
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 14,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 15,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            213
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        512,
+        512,
+        1
+      ]
+    },
+    {
+      "id": 70,
+      "type": "Note",
+      "pos": [
+        675,
+        875
+      ],
+      "size": {
+        "0": 350,
+        "1": 75
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Positive and negative prompts"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 72,
+      "type": "Note",
+      "pos": [
+        1600,
+        875
+      ],
+      "size": {
+        "0": 325,
+        "1": 75
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "First pass"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 73,
+      "type": "Note",
+      "pos": [
+        2025,
+        725
+      ],
+      "size": {
+        "0": 325,
+        "1": 75
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Second pass"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 32,
+      "type": "RescaleCFG",
+      "pos": [
+        1125,
+        1525
+      ],
+      "size": {
+        "0": 325,
+        "1": 75
+      },
+      "flags": {},
+      "order": 15,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 209
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            202
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RescaleCFG"
+      },
+      "widgets_values": [
+        0.12
+      ]
+    },
+    {
+      "id": 60,
+      "type": "KSampler //Inspire",
+      "pos": [
+        2025,
+        1000
+      ],
+      "size": {
+        "0": 325,
+        "1": 550
+      },
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 246
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 255
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 218
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 221
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "link": 220,
+          "widget": {
+            "name": "seed"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            232
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler //Inspire"
+      },
+      "widgets_values": [
+        628659693849180,
+        "randomize",
+        30,
+        4,
+        "dpmpp_3m_sde_gpu",
+        "AYS SDXL",
+        0.4,
+        "GPU(=A1111)",
+        "incremental",
+        0,
+        0
+      ]
+    },
+    {
+      "id": 59,
+      "type": "KSampler //Inspire",
+      "pos": [
+        1600,
+        1000
+      ],
+      "size": {
+        "0": 325,
+        "1": 550
+      },
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 212
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 254
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 211
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 213
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "link": 214,
+          "widget": {
+            "name": "seed"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            215,
+            223
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler //Inspire"
+      },
+      "widgets_values": [
+        628659693849180,
+        "randomize",
+        40,
+        5,
+        "dpmpp_3m_sde_gpu",
+        "AYS SDXL",
+        1,
+        "GPU(=A1111)",
+        "incremental",
+        0,
+        0
+      ]
+    },
+    {
+      "id": 26,
+      "type": "NNLatentUpscale",
+      "pos": [
+        2025,
+        850
+      ],
+      "size": {
+        "0": 325,
+        "1": 100
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "link": 223
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            221
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "NNLatentUpscale"
+      },
+      "widgets_values": [
+        "SDXL",
+        1.5
+      ]
+    },
+    {
+      "id": 15,
+      "type": "PrimitiveNode",
+      "pos": [
+        350,
+        1575
+      ],
+      "size": {
+        "0": 200,
+        "1": 75
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            214,
+            220
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "seed"
+          }
+        }
+      ],
+      "title": "Seed",
+      "properties": {
+        "Run widget replace on values": false
+      },
+      "widgets_values": [
+        628659693849180,
+        "fixed"
+      ]
+    },
+    {
+      "id": 69,
+      "type": "Note",
+      "pos": [
+        175,
+        875
+      ],
+      "size": {
+        "0": 375,
+        "1": 75
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Initial settings. Set your checkpoint and optional LoRA stack. Use CTRL+B to activate the LoRAs."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 30,
+      "type": "FreeU_V2",
+      "pos": [
+        1125,
+        1000
+      ],
+      "size": {
+        "0": 325,
+        "1": 130
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 200
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            205
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FreeU_V2"
+      },
+      "widgets_values": [
+        1.01,
+        1.02,
+        0.98,
+        0.9500000000000001
+      ]
+    },
+    {
+      "id": 71,
+      "type": "Note",
+      "pos": [
+        1125,
+        775
+      ],
+      "size": {
+        "0": 325,
+        "1": 175
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Optional optimizations. Use CTRL+B to turn on each node. \n\n- FreeU can improve coherency at the expense of detail.\n- SAG and PAG can improve detail at the expense of speed. \n- Rescale CFG can help avoid \"burned\" images at high CFGs. \n- CADS can create more varied compositions by injecting noise early in the generation process."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 65,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        175,
+        1000
+      ],
+      "size": {
+        "0": 375,
+        "1": 125
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            243
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            242,
+            244
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            237,
+            238
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "RobMixEvolution D.safetensors"
+      ]
+    },
+    {
+      "id": 31,
+      "type": "CADS",
+      "pos": [
+        1125,
+        1650
+      ],
+      "size": {
+        "0": 325,
+        "1": 250
+      },
+      "flags": {},
+      "order": 16,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 202
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            212,
+            246
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CADS"
+      },
+      "widgets_values": [
+        2,
+        0.6,
+        0.9,
+        0.5,
+        -1,
+        -1,
+        "uncond",
+        "y",
+        "normal"
+      ]
+    },
+    {
+      "id": 58,
+      "type": "PerturbedAttention",
+      "pos": [
+        1125,
+        1300
+      ],
+      "size": {
+        "0": 327.6000061035156,
+        "1": 178
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 208
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            209
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PerturbedAttention"
+      },
+      "widgets_values": [
+        1.5,
+        0.1,
+        "middle",
+        0,
+        -1,
+        -1
+      ]
+    },
+    {
+      "id": 1,
+      "type": "CLIPTextEncode",
+      "pos": [
+        675,
+        1000
+      ],
+      "size": {
+        "0": 350,
+        "1": 200
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 242
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            254,
+            255
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Positive",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "A photo of a cute puppy dog"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [
+        675,
+        1250
+      ],
+      "size": {
+        "0": 350,
+        "1": 200
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 244
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            211,
+            218
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Negative",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "anime, illustration"
+      ]
+    },
+    {
+      "id": 22,
+      "type": "workflow/LoRA",
+      "pos": [
+        175,
+        1175
+      ],
+      "size": {
+        "0": 375,
+        "1": 200
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 243
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            200
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "workflow/LoRA"
+      },
+      "widgets_values": [
+        "Photo\\mjv6.safetensors",
+        0,
+        "Photo\\MJ52.safetensors",
+        0,
+        "Photo\\Brandon Woelfel Style.safetensors",
+        0
+      ]
+    }
+  ],
+  "links": [
+    [
+      14,
+      17,
+      0,
+      10,
+      0,
+      "INT"
+    ],
+    [
+      15,
+      17,
+      1,
+      10,
+      1,
+      "INT"
+    ],
+    [
+      200,
+      22,
+      0,
+      30,
+      0,
+      "MODEL"
+    ],
+    [
+      202,
+      32,
+      0,
+      31,
+      0,
+      "MODEL"
+    ],
+    [
+      205,
+      30,
+      0,
+      55,
+      0,
+      "MODEL"
+    ],
+    [
+      208,
+      55,
+      0,
+      58,
+      0,
+      "MODEL"
+    ],
+    [
+      209,
+      58,
+      0,
+      32,
+      0,
+      "MODEL"
+    ],
+    [
+      211,
+      3,
+      0,
+      59,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      212,
+      31,
+      0,
+      59,
+      0,
+      "MODEL"
+    ],
+    [
+      213,
+      10,
+      0,
+      59,
+      3,
+      "LATENT"
+    ],
+    [
+      214,
+      15,
+      0,
+      59,
+      4,
+      "INT"
+    ],
+    [
+      215,
+      59,
+      0,
+      37,
+      0,
+      "LATENT"
+    ],
+    [
+      218,
+      3,
+      0,
+      60,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      220,
+      15,
+      0,
+      60,
+      4,
+      "INT"
+    ],
+    [
+      221,
+      26,
+      0,
+      60,
+      3,
+      "LATENT"
+    ],
+    [
+      223,
+      59,
+      0,
+      26,
+      0,
+      "LATENT"
+    ],
+    [
+      232,
+      60,
+      0,
+      64,
+      0,
+      "LATENT"
+    ],
+    [
+      237,
+      65,
+      2,
+      37,
+      1,
+      "VAE"
+    ],
+    [
+      238,
+      65,
+      2,
+      64,
+      1,
+      "VAE"
+    ],
+    [
+      242,
+      65,
+      1,
+      1,
+      0,
+      "CLIP"
+    ],
+    [
+      243,
+      65,
+      0,
+      22,
+      0,
+      "MODEL"
+    ],
+    [
+      244,
+      65,
+      1,
+      3,
+      0,
+      "CLIP"
+    ],
+    [
+      246,
+      31,
+      0,
+      60,
+      0,
+      "MODEL"
+    ],
+    [
+      254,
+      1,
+      0,
+      59,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      255,
+      1,
+      0,
+      60,
+      1,
+      "CONDITIONING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "groupNodes": {
+      "LoRA": {
+        "nodes": [
+          {
+            "type": "LoraLoaderModelOnly",
+            "pos": [
+              1300,
+              930
+            ],
+            "size": {
+              "0": 315,
+              "1": 82
+            },
+            "flags": {},
+            "order": 9,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "model",
+                "type": "MODEL",
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "MODEL",
+                "type": "MODEL",
+                "links": [],
+                "shape": 3,
+                "slot_index": 0
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "LoraLoaderModelOnly"
+            },
+            "widgets_values": [
+              "Artistic\\COOLKIDS_XL_0.3_RC.safetensors",
+              0
+            ],
+            "index": 0
+          },
+          {
+            "type": "LoraLoaderModelOnly",
+            "pos": [
+              1310,
+              1070
+            ],
+            "size": {
+              "0": 315,
+              "1": 82
+            },
+            "flags": {},
+            "order": 11,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "model",
+                "type": "MODEL",
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "MODEL",
+                "type": "MODEL",
+                "links": [],
+                "shape": 3,
+                "slot_index": 0
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "LoraLoaderModelOnly"
+            },
+            "widgets_values": [
+              "Artistic\\COOLKIDS_XL_0.3_RC.safetensors",
+              0
+            ],
+            "index": 1
+          },
+          {
+            "type": "LoraLoaderModelOnly",
+            "pos": [
+              1310,
+              1210
+            ],
+            "size": {
+              "0": 315,
+              "1": 82
+            },
+            "flags": {},
+            "order": 12,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "model",
+                "type": "MODEL",
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "MODEL",
+                "type": "MODEL",
+                "links": null,
+                "shape": 3
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "LoraLoaderModelOnly"
+            },
+            "widgets_values": [
+              "Artistic\\COOLKIDS_XL_0.3_RC.safetensors",
+              0
+            ],
+            "index": 2
+          }
+        ],
+        "links": [
+          [
+            null,
+            0,
+            0,
+            0,
+            13,
+            "MODEL"
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            19,
+            "MODEL"
+          ],
+          [
+            1,
+            0,
+            2,
+            0,
+            20,
+            "MODEL"
+          ]
+        ],
+        "external": [],
+        "config": {
+          "0": {
+            "input": {
+              "lora_name": {
+                "name": "LoRA A"
+              },
+              "strength_model": {
+                "name": "LoRA A Strength"
+              }
+            }
+          },
+          "1": {
+            "input": {
+              "lora_name": {
+                "name": "LoRA B"
+              },
+              "strength_model": {
+                "name": "LoRA B Strength"
+              }
+            }
+          },
+          "2": {
+            "input": {
+              "lora_name": {
+                "name": "LoRA C"
+              },
+              "strength_model": {
+                "name": "LoRA C Strength"
+              }
+            }
+          }
+        }
+      },
+      "Output": {
+        "nodes": [
+          {
+            "type": "VAEDecode",
+            "pos": [
+              1350,
+              50
+            ],
+            "size": {
+              "0": 200,
+              "1": 50
+            },
+            "flags": {},
+            "order": 9,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "samples",
+                "type": "LATENT",
+                "link": null
+              },
+              {
+                "name": "vae",
+                "type": "VAE",
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "name": "IMAGE",
+                "type": "IMAGE",
+                "links": [],
+                "shape": 3,
+                "slot_index": 0
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "VAEDecode"
+            },
+            "index": 0
+          },
+          {
+            "type": "PreviewImage",
+            "pos": [
+              1350,
+              150
+            ],
+            "size": {
+              "0": 200,
+              "1": 250
+            },
+            "flags": {},
+            "order": 11,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "images",
+                "type": "IMAGE",
+                "link": null
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "PreviewImage"
+            },
+            "index": 1
+          }
+        ],
+        "links": [
+          [
+            null,
+            0,
+            0,
+            0,
+            6,
+            "LATENT"
+          ],
+          [
+            null,
+            0,
+            0,
+            1,
+            23,
+            "VAE"
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            24,
+            "IMAGE"
+          ]
+        ],
+        "external": []
+      }
+    }
+  },
+  "version": 0.4
+}
