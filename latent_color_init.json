@@ -1,0 +1,783 @@
+{
+  "last_node_id": 102,
+  "last_link_id": 434,
+  "nodes": [
+    {
+      "id": 92,
+      "type": "PrimitiveNode",
+      "pos": [
+        700,
+        1200
+      ],
+      "size": {
+        "0": 200,
+        "1": 75
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            414,
+            415
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "width"
+          }
+        }
+      ],
+      "title": "Width",
+      "properties": {
+        "Run widget replace on values": false
+      },
+      "widgets_values": [
+        1344,
+        "fixed"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 93,
+      "type": "PrimitiveNode",
+      "pos": [
+        700,
+        1325
+      ],
+      "size": {
+        "0": 200,
+        "1": 75
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            416,
+            417
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "title": "Height",
+      "properties": {
+        "Run widget replace on values": false
+      },
+      "widgets_values": [
+        768,
+        "fixed"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 10,
+      "type": "EmptyLatentImage",
+      "pos": [
+        925,
+        1375
+      ],
+      "size": {
+        "0": 225,
+        "1": 100
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 415,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 417,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            394
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1344,
+        768,
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1050,
+        950
+      ],
+      "size": {
+        "0": 350,
+        "1": 100
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 404
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            419
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Negative",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "(vibrant, contrast:0.3), painting, cartoon, render, illustration, overexposed"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 86,
+      "type": "VAEEncode",
+      "pos": [
+        1175,
+        1200
+      ],
+      "size": [
+        200,
+        50
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 390
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 389
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            393
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEEncode"
+      }
+    },
+    {
+      "id": 87,
+      "type": "LatentBlend",
+      "pos": [
+        1400,
+        1200
+      ],
+      "size": {
+        "0": 315,
+        "1": 78
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples1",
+          "type": "LATENT",
+          "link": 393
+        },
+        {
+          "name": "samples2",
+          "type": "LATENT",
+          "link": 394
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            420
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LatentBlend"
+      },
+      "widgets_values": [
+        1
+      ]
+    },
+    {
+      "id": 1,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1050,
+        725
+      ],
+      "size": {
+        "0": 350,
+        "1": 175
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 403
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            418
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Positive",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "A close-up view of a large pile of fresh, ripe oranges with their green leaves attached. The oranges are arranged tightly together, displaying their vibrant, natural orange color and textured peel. The green leaves add a contrasting color and a sense of freshness to the scene. The lighting highlights the juicy, appealing look of the oranges, making them look very inviting.\n\n"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 85,
+      "type": "Colored Image (mtb)",
+      "pos": [
+        925,
+        1200
+      ],
+      "size": {
+        "0": 225,
+        "1": 130
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "foreground_image",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "foreground_mask",
+          "type": "MASK",
+          "link": null
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 414,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 416,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            390
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Colored Image (mtb)"
+      },
+      "widgets_values": [
+        "#654501",
+        1344,
+        768
+      ]
+    },
+    {
+      "id": 74,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        700,
+        725
+      ],
+      "size": {
+        "0": 325,
+        "1": 100
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            421
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            403,
+            404
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            389,
+            423
+          ],
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "RobMixEvolution D.safetensors"
+      ]
+    },
+    {
+      "id": 101,
+      "type": "Note",
+      "pos": [
+        1400,
+        1325
+      ],
+      "size": [
+        200,
+        75
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 3,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "0 = no effect\n1 = full effect"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 91,
+      "type": "Note",
+      "pos": [
+        675,
+        1575
+      ],
+      "size": [
+        375,
+        150
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Initialize a solid color image and an empty latent image of the same size. VAE encode the colored pixels, and blend with the empty latent to adjust the strength of the effect. \n\nThe Colored Image node requires Comfy MTB Nodes:\nhttps://github.com/melMass/comfy_mtb\n\nAlternatively, use a Load Image node with a solid color image. Consider trying gradients, patterns, etc. "
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 102,
+      "type": "Note",
+      "pos": [
+        700,
+        525
+      ],
+      "size": [
+        375,
+        125
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "title": "About This Workflow",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "This isn't a earth-shattering innovation. It's essentially an img2img with a solid color image. \n\nThe benefit is that you can have some control over tone and color, and using a colored init image can help vary composition. "
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 94,
+      "type": "KSampler",
+      "pos": [
+        1450,
+        575
+      ],
+      "size": [
+        325,
+        475
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 421
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 418
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 419
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 420
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            424
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        3746141,
+        "fixed",
+        20,
+        8,
+        "euler",
+        "normal",
+        1
+      ]
+    },
+    {
+      "id": 95,
+      "type": "VAEDecode",
+      "pos": [
+        1800,
+        575
+      ],
+      "size": {
+        "0": 200,
+        "1": 50
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 424
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 423
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            422
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 96,
+      "type": "PreviewImage",
+      "pos": [
+        1800,
+        675
+      ],
+      "size": {
+        "0": 325,
+        "1": 350
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 422
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    }
+  ],
+  "links": [
+    [
+      389,
+      74,
+      2,
+      86,
+      1,
+      "VAE"
+    ],
+    [
+      390,
+      85,
+      0,
+      86,
+      0,
+      "IMAGE"
+    ],
+    [
+      393,
+      86,
+      0,
+      87,
+      0,
+      "LATENT"
+    ],
+    [
+      394,
+      10,
+      0,
+      87,
+      1,
+      "LATENT"
+    ],
+    [
+      403,
+      74,
+      1,
+      1,
+      0,
+      "CLIP"
+    ],
+    [
+      404,
+      74,
+      1,
+      3,
+      0,
+      "CLIP"
+    ],
+    [
+      414,
+      92,
+      0,
+      85,
+      2,
+      "INT"
+    ],
+    [
+      415,
+      92,
+      0,
+      10,
+      0,
+      "INT"
+    ],
+    [
+      416,
+      93,
+      0,
+      85,
+      3,
+      "INT"
+    ],
+    [
+      417,
+      93,
+      0,
+      10,
+      1,
+      "INT"
+    ],
+    [
+      418,
+      1,
+      0,
+      94,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      419,
+      3,
+      0,
+      94,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      420,
+      87,
+      0,
+      94,
+      3,
+      "LATENT"
+    ],
+    [
+      421,
+      74,
+      0,
+      94,
+      0,
+      "MODEL"
+    ],
+    [
+      422,
+      95,
+      0,
+      96,
+      0,
+      "IMAGE"
+    ],
+    [
+      423,
+      74,
+      2,
+      95,
+      1,
+      "VAE"
+    ],
+    [
+      424,
+      94,
+      0,
+      95,
+      0,
+      "LATENT"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Latent Color Init",
+      "bounding": [
+        675,
+        1100,
+        1075,
+        400
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {
+    "groupNodes": {},
+    "ds": {
+      "scale": 0.5349999999999996,
+      "offset": {
+        "0": 216.70310652816542,
+        "1": -113.43734855008034
+      }
+    }
+  },
+  "version": 0.4
+}
