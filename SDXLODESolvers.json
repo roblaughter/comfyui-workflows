@@ -785,7 +785,7 @@
         "text": ""
       },
       "widgets_values": [
-        "RECOMMENDED PROMPT STYLE =====================================\n\nUse natural language prompting in CLIP-G with SD 1.5 keyword-based prompting in CLIP-L. \n\nUse my custom GPT for prompt generation. Specifically ask for CLIP-G and CLIP-L variations. \n\nhttps://chatgpt.com/g/g-OndbVJ3Et-image-prompt-generator\n\nhttps://github.com/redhottensors/ComfyUI-ODE"
+        "RECOMMENDED PROMPT STYLE =====================================\n\nUse natural language prompting in CLIP-G with SD 1.5 keyword-based prompting in CLIP-L.  Set width/height to 2x image resolution. \n\nUse my custom GPT for prompt generation. Specifically ask for CLIP-G and CLIP-L variations. \n\nhttps://chatgpt.com/g/g-OndbVJ3Et-image-prompt-generator\n\nhttps://github.com/redhottensors/ComfyUI-ODE"
       ],
       "color": "#432",
       "bgcolor": "#653"
