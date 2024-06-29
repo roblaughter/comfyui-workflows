@@ -1,5 +1,5 @@
 {
-  "last_node_id": 129,
+  "last_node_id": 130,
   "last_link_id": 536,
   "nodes": [
     {
@@ -142,48 +142,6 @@
       ]
     },
     {
-      "id": 93,
-      "type": "NNLatentUpscale",
-      "pos": [
-        2075,
-        800
-      ],
-      "size": {
-        "0": 315,
-        "1": 82
-      },
-      "flags": {
-        "collapsed": true
-      },
-      "order": 19,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "latent",
-          "type": "LATENT",
-          "link": 505
-        }
-      ],
-      "outputs": [
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "links": [
-            512
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "NNLatentUpscale"
-      },
-      "widgets_values": [
-        "SDXL",
-        1.5
-      ]
-    },
-    {
       "id": 67,
       "type": "PerturbedAttention",
       "pos": [
@@ -260,33 +218,60 @@
       "properties": {}
     },
     {
-      "id": 38,
-      "type": "workflow/Upscale Output",
+      "id": 10,
+      "type": "EmptyLatentImage",
       "pos": [
-        1650,
-        1250
+        1425,
+        1425
       ],
-      "size": {
-        "0": 350,
-        "1": 475
+      "size": [
+        200,
+        125
+      ],
+      "flags": {
+        "collapsed": false
       },
-      "flags": {},
-      "order": 18,
+      "order": 9,
       "mode": 0,
       "inputs": [
         {
-          "name": "samples",
-          "type": "LATENT",
-          "link": 470
+          "name": "width",
+          "type": "INT",
+          "link": 14,
+          "widget": {
+            "name": "width"
+          }
         },
         {
-          "name": "vae",
-          "type": "VAE",
-          "link": 358
+          "name": "height",
+          "type": "INT",
+          "link": 15,
+          "widget": {
+            "name": "height"
+          }
         }
       ],
-      "title": "First Pass Output",
-      "properties": {}
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            475
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        512,
+        512,
+        1
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
     },
     {
       "id": 82,
@@ -405,10 +390,10 @@
         175,
         700
       ],
-      "size": {
-        "0": 325,
-        "1": 100
-      },
+      "size": [
+        325,
+        100
+      ],
       "flags": {},
       "order": 0,
       "mode": 0,
@@ -524,9 +509,257 @@
         1,
         true,
         5,
-        322686977728135,
+        511645922196506,
         "fixed"
       ]
+    },
+    {
+      "id": 15,
+      "type": "PrimitiveNode",
+      "pos": [
+        1425,
+        1600
+      ],
+      "size": {
+        "0": 200,
+        "1": 75
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            476,
+            513
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "noise_seed"
+          }
+        }
+      ],
+      "title": "Seed",
+      "properties": {
+        "Run widget replace on values": false
+      },
+      "widgets_values": [
+        511645922196506,
+        "fixed"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1225,
+        1250
+      ],
+      "size": {
+        "0": 400,
+        "1": 125
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 378
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            474,
+            511
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Negative",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "anime, illustration, cartoon, faces, hands"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 17,
+      "type": "SDXLResolutionPresets",
+      "pos": [
+        1125,
+        1425
+      ],
+      "size": [
+        275,
+        125
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            14
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            15
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "title": "Resolution",
+      "properties": {
+        "Node name for S&R": "SDXLResolutionPresets"
+      },
+      "widgets_values": [
+        "Photo (1216x832)",
+        "Vertical"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 127,
+      "type": "Note",
+      "pos": [
+        875,
+        475
+      ],
+      "size": [
+        325,
+        175
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "OPTIONAL MODEL OPTIMIZATIONS ====================\n\nPAG Advanced Node: https://github.com/pamparamm/sd-perturbed-attention\n\nAutomatic CFG Node: https://github.com/Extraltodeus/ComfyUI-AutomaticCFG\n"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 126,
+      "type": "Note",
+      "pos": [
+        525,
+        550
+      ],
+      "size": {
+        "0": 325,
+        "1": 100
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "OPTIONAL LoRA STACK ============================="
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 125,
+      "type": "Note",
+      "pos": [
+        175,
+        550
+      ],
+      "size": [
+        325,
+        100
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "LOAD MODEL ======================================\n\nRobMix Zenith Download: https://civitai.com/models/334323?modelVersionId=594099"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 128,
+      "type": "Note",
+      "pos": [
+        1225,
+        475
+      ],
+      "size": [
+        400,
+        175
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "RECOMMENDED PROMPT STYLE =====================================\n\nUse natural language prompting in CLIP-G with SD 1.5 keyword-based prompting in CLIP-L. Set width/height to 2x image resolution. \n\nUse my custom GPT for prompt generation. Specifically ask for CLIP-G and CLIP-L variations. \n\nhttps://chatgpt.com/g/g-OndbVJ3Et-image-prompt-generator\n\nhttps://github.com/redhottensors/ComfyUI-ODE"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 38,
+      "type": "workflow/Upscale Output",
+      "pos": [
+        1650,
+        1250
+      ],
+      "size": {
+        "0": 350,
+        "1": 475
+      },
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 470
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 358
+        }
+      ],
+      "title": "First Pass Output",
+      "properties": {}
     },
     {
       "id": 115,
@@ -603,9 +836,97 @@
         0.4,
         true,
         5,
-        322686977728135,
+        511645922196506,
         "fixed"
       ]
+    },
+    {
+      "id": 93,
+      "type": "NNLatentUpscale",
+      "pos": [
+        2025,
+        575
+      ],
+      "size": [
+        350,
+        75
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "link": 505
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            512
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "NNLatentUpscale"
+      },
+      "widgets_values": [
+        "SDXL",
+        1.5
+      ]
+    },
+    {
+      "id": 129,
+      "type": "Note",
+      "pos": [
+        1650,
+        375
+      ],
+      "size": [
+        350,
+        275
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "ODE SOLVERS ==========================================\n\nNode: https://github.com/redhottensors/ComfyUI-ODE\n\nUse the recommended settings below, or review the documentation carefully for details on how the various parameters work, particularly the max_steps parameter.\n\nFor a slight quality boost, change the tolerances to:\n\nRelative: -3.0\nAbsolute: -4.0 \n\nLower tolerances see only marginal gains at the expense of speed. \n\nThe sampler nodes below are group nodes. Right click and choose \"Convert to nodes\" to see what's inside. "
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 130,
+      "type": "Note",
+      "pos": [
+        2025,
+        375
+      ],
+      "size": [
+        350,
+        150
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "NN LATENT UPSCALE ====================================\n\nNode: https://github.com/Ttl/ComfyUi_NNLatentUpscale\n\nSignificantly better quality than standard latent upscale, and significantly faster than VAE Decode > Pixel Upscale > VAE Encode. \n\n1.5x recommended, can go as high as 2x."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
     },
     {
       "id": 96,
@@ -655,304 +976,6 @@
       ],
       "color": "#232",
       "bgcolor": "#353"
-    },
-    {
-      "id": 3,
-      "type": "CLIPTextEncode",
-      "pos": [
-        1225,
-        1250
-      ],
-      "size": {
-        "0": 400,
-        "1": 125
-      },
-      "flags": {},
-      "order": 13,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 378
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            474,
-            511
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "title": "Negative",
-      "properties": {
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        "anime, illustration, cartoon, faces, hands"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 17,
-      "type": "SDXLResolutionPresets",
-      "pos": [
-        1125,
-        1425
-      ],
-      "size": {
-        "0": 275,
-        "1": 125
-      },
-      "flags": {},
-      "order": 1,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "width",
-          "type": "INT",
-          "links": [
-            14
-          ],
-          "shape": 3,
-          "slot_index": 0
-        },
-        {
-          "name": "height",
-          "type": "INT",
-          "links": [
-            15
-          ],
-          "shape": 3,
-          "slot_index": 1
-        }
-      ],
-      "title": "Resolution",
-      "properties": {
-        "Node name for S&R": "SDXLResolutionPresets"
-      },
-      "widgets_values": [
-        "Photo (1216x832)",
-        "Vertical"
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
-    },
-    {
-      "id": 129,
-      "type": "Note",
-      "pos": [
-        1650,
-        425
-      ],
-      "size": {
-        "0": 525,
-        "1": 225
-      },
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "properties": {
-        "text": ""
-      },
-      "widgets_values": [
-        "ODE SOLVERS =======================================================================\n\nNode: https://github.com/redhottensors/ComfyUI-ODE\n\nUse the recommended settings below, or review the documentation carefully for details on how the various parameters work, particularly the max_steps parameter.\n\nFor a slight quality boost, change the tolerances to:\n\nRelative: -3.0\nAbsolute: -4.0 \n\nLower tolerances see only marginal gains at the expense of speed. \n\nThe sampler nodes below are group nodes. Right click and choose \"Convert to nodes\" to see what's inside. "
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 128,
-      "type": "Note",
-      "pos": [
-        1225,
-        475
-      ],
-      "size": {
-        "0": 400,
-        "1": 175
-      },
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "properties": {
-        "text": ""
-      },
-      "widgets_values": [
-        "RECOMMENDED PROMPT STYLE =====================================\n\nUse natural language prompting in CLIP-G with SD 1.5 keyword-based prompting in CLIP-L.  Set width/height to 2x image resolution. \n\nUse my custom GPT for prompt generation. Specifically ask for CLIP-G and CLIP-L variations. \n\nhttps://chatgpt.com/g/g-OndbVJ3Et-image-prompt-generator\n\nhttps://github.com/redhottensors/ComfyUI-ODE"
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 127,
-      "type": "Note",
-      "pos": [
-        875,
-        475
-      ],
-      "size": {
-        "0": 325,
-        "1": 175
-      },
-      "flags": {},
-      "order": 4,
-      "mode": 0,
-      "properties": {
-        "text": ""
-      },
-      "widgets_values": [
-        "OPTIONAL MODEL OPTIMIZATIONS ====================\n\nPAG Advanced Node: https://github.com/pamparamm/sd-perturbed-attention\n\nAutomatic CFG Node: https://github.com/Extraltodeus/ComfyUI-AutomaticCFG\n"
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 126,
-      "type": "Note",
-      "pos": [
-        525,
-        550
-      ],
-      "size": {
-        "0": 325,
-        "1": 100
-      },
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "properties": {
-        "text": ""
-      },
-      "widgets_values": [
-        "OPTIONAL LoRA STACK ============================="
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 125,
-      "type": "Note",
-      "pos": [
-        175,
-        550
-      ],
-      "size": {
-        "0": 325,
-        "1": 100
-      },
-      "flags": {},
-      "order": 6,
-      "mode": 0,
-      "properties": {
-        "text": ""
-      },
-      "widgets_values": [
-        "LOAD MODEL ======================================\n\nRobMix Zenith Download: https://civitai.com/models/334323?modelVersionId=594099"
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 10,
-      "type": "EmptyLatentImage",
-      "pos": [
-        1425,
-        1425
-      ],
-      "size": [
-        200,
-        125
-      ],
-      "flags": {
-        "collapsed": false
-      },
-      "order": 9,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "width",
-          "type": "INT",
-          "link": 14,
-          "widget": {
-            "name": "width"
-          }
-        },
-        {
-          "name": "height",
-          "type": "INT",
-          "link": 15,
-          "widget": {
-            "name": "height"
-          }
-        }
-      ],
-      "outputs": [
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "links": [
-            475
-          ],
-          "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "EmptyLatentImage"
-      },
-      "widgets_values": [
-        512,
-        512,
-        1
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
-    },
-    {
-      "id": 15,
-      "type": "PrimitiveNode",
-      "pos": [
-        1425,
-        1600
-      ],
-      "size": [
-        200,
-        75
-      ],
-      "flags": {},
-      "order": 7,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "INT",
-          "type": "INT",
-          "links": [
-            476,
-            513
-          ],
-          "slot_index": 0,
-          "widget": {
-            "name": "noise_seed"
-          }
-        }
-      ],
-      "title": "Seed",
-      "properties": {
-        "Run widget replace on values": false
-      },
-      "widgets_values": [
-        322686977728135,
-        "randomize"
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
     }
   ],
   "links": [
@@ -1190,15 +1213,15 @@
           {
             "type": "VAEDecode",
             "pos": [
-              1350,
-              50
+              2800,
+              150
             ],
             "size": {
-              "0": 200,
-              "1": 50
+              "0": 210,
+              "1": 46
             },
             "flags": {},
-            "order": 9,
+            "order": 12,
             "mode": 0,
             "inputs": [
               {
@@ -1229,15 +1252,15 @@
           {
             "type": "PreviewImage",
             "pos": [
-              1350,
-              150
+              2800,
+              250
             ],
             "size": {
-              "0": 200,
+              "0": 210,
               "1": 250
             },
             "flags": {},
-            "order": 11,
+            "order": 13,
             "mode": 0,
             "inputs": [
               {
@@ -1258,12 +1281,12 @@
             0,
             0,
             0,
-            6,
+            29,
             "LATENT"
           ],
           [
             null,
-            0,
+            1,
             0,
             1,
             23,
@@ -1274,12 +1297,20 @@
             0,
             1,
             0,
-            24,
+            34,
             "IMAGE"
           ]
         ],
         "external": []
       },
+      
+      
+      
+      
+      
+      
+      
+      
       "ODE Sampler": {
         "nodes": [
           {
@@ -1647,10 +1678,10 @@
       }
     },
     "ds": {
-      "scale": 0.5749999999999996,
+      "scale": 0.5499999999999996,
       "offset": {
-        "0": -588.0570587563486,
-        "1": -252.63473247081689
+        "0": -297.1720886230469,
+        "1": 22.756343841552734
       }
     }
   },
