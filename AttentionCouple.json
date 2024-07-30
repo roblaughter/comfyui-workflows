@@ -1,0 +1,1550 @@
+{
+  "last_node_id": 107,
+  "last_link_id": 183,
+  "nodes": [
+    {
+      "id": 4,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -600,
+        1300
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            29
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            3,
+            5,
+            10,
+            113,
+            143
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            8
+          ],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "RobMixZenith.safetensors"
+      ]
+    },
+    {
+      "id": 69,
+      "type": "SolidMask",
+      "pos": [
+        125,
+        -75
+      ],
+      "size": {
+        "0": 300,
+        "1": 125
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 133,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 134,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            119
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Filled Mask",
+      "properties": {
+        "Node name for S&R": "SolidMask"
+      },
+      "widgets_values": [
+        1,
+        1536,
+        640
+      ]
+    },
+    {
+      "id": 75,
+      "type": "AlignYourStepsScheduler",
+      "pos": [
+        2100,
+        700
+      ],
+      "size": {
+        "0": 300,
+        "1": 125
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            121
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AlignYourStepsScheduler"
+      },
+      "widgets_values": [
+        "SDXL",
+        40,
+        1
+      ]
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        2475,
+        775
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 126
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            48
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 26,
+      "type": "PreviewImage",
+      "pos": [
+        2475,
+        875
+      ],
+      "size": {
+        "0": 400,
+        "1": 450
+      },
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 48
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 72,
+      "type": "KSamplerSelect",
+      "pos": [
+        2100,
+        575
+      ],
+      "size": {
+        "0": 300,
+        "1": 75
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            120
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "dpmpp_3m_sde_gpu"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [
+        2100,
+        425
+      ],
+      "size": {
+        "0": 300,
+        "1": 100
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 44,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 45,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            125
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        768,
+        768,
+        1
+      ]
+    },
+    {
+      "id": 23,
+      "type": "SDXLResolutionPresets",
+      "pos": [
+        -425,
+        775
+      ],
+      "size": {
+        "0": 315,
+        "1": 102
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            44,
+            133
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            45,
+            134
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SDXLResolutionPresets"
+      },
+      "widgets_values": [
+        "Cinematic (1536x640)",
+        "Horizontal"
+      ]
+    },
+    {
+      "id": 68,
+      "type": "ConditioningCombine",
+      "pos": [
+        1250,
+        925
+      ],
+      "size": {
+        "0": 342.5999755859375,
+        "1": 46
+      },
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning_1",
+          "type": "CONDITIONING",
+          "link": 170
+        },
+        {
+          "name": "conditioning_2",
+          "type": "CONDITIONING",
+          "link": 171
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            157
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Prompts 1/2/3 + Base",
+      "properties": {
+        "Node name for S&R": "ConditioningCombine"
+      }
+    },
+    {
+      "id": 100,
+      "type": "ConditioningCombine",
+      "pos": [
+        1250,
+        825
+      ],
+      "size": {
+        "0": 342.5999755859375,
+        "1": 46
+      },
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning_1",
+          "type": "CONDITIONING",
+          "link": 173
+        },
+        {
+          "name": "conditioning_2",
+          "type": "CONDITIONING",
+          "link": 154
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            170
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Prompts 1/2 + Prompt 3",
+      "properties": {
+        "Node name for S&R": "ConditioningCombine"
+      }
+    },
+    {
+      "id": 17,
+      "type": "ConditioningCombine",
+      "pos": [
+        1250,
+        725
+      ],
+      "size": {
+        "0": 342.5999755859375,
+        "1": 46
+      },
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning_1",
+          "type": "CONDITIONING",
+          "link": 24
+        },
+        {
+          "name": "conditioning_2",
+          "type": "CONDITIONING",
+          "link": 23
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            173
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "title": "Prompt 1 + Prompt 2",
+      "properties": {
+        "Node name for S&R": "ConditioningCombine"
+      }
+    },
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": [
+        125,
+        1850
+      ],
+      "size": {
+        "0": 425.27801513671875,
+        "1": 180.6060791015625
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            26
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "anime, cartoon, painting"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 15,
+      "type": "ConditioningSetMask",
+      "pos": [
+        775,
+        900
+      ],
+      "size": {
+        "0": 211.60000610351562,
+        "1": 102
+      },
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 18
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 163
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            23
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningSetMask"
+      },
+      "widgets_values": [
+        0.5,
+        "default"
+      ]
+    },
+    {
+      "id": 18,
+      "type": "Attention couple",
+      "pos": [
+        1625,
+        725
+      ],
+      "size": {
+        "0": 250,
+        "1": 100
+      },
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 29
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 157
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 26
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            182
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            123
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            124
+          ],
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Attention couple"
+      },
+      "widgets_values": [
+        "Attention"
+      ]
+    },
+    {
+      "id": 107,
+      "type": "Automatic CFG",
+      "pos": [
+        1725,
+        1125
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 182
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            183
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Automatic CFG"
+      },
+      "widgets_values": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": 70,
+      "type": "ConditioningSetMask",
+      "pos": [
+        575,
+        100
+      ],
+      "size": {
+        "0": 317.4000244140625,
+        "1": 102
+      },
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 117
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 119
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            171
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningSetMask"
+      },
+      "widgets_values": [
+        0.75,
+        "default"
+      ]
+    },
+    {
+      "id": 16,
+      "type": "ConditioningSetMask",
+      "pos": [
+        775,
+        425
+      ],
+      "size": {
+        "0": 211.60000610351562,
+        "1": 102
+      },
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 20
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 165
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            24
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningSetMask"
+      },
+      "widgets_values": [
+        1.5,
+        "default"
+      ]
+    },
+    {
+      "id": 71,
+      "type": "SamplerCustom",
+      "pos": [
+        2100,
+        875
+      ],
+      "size": {
+        "0": 350,
+        "1": 450
+      },
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 183
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 123
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 124
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 120
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 121
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 125
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            126
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustom"
+      },
+      "widgets_values": [
+        true,
+        734772,
+        "fixed",
+        8
+      ]
+    },
+    {
+      "id": 104,
+      "type": "Note",
+      "pos": [
+        1275,
+        100
+      ],
+      "size": {
+        "0": 475,
+        "1": 375
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "title": "HOW TO USE THIS WORKFLOW",
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "BASIC INSTRUCTIONS -------------------------------------------------------\n\n1. Set a base prompt for the entire image. This should be a generic description of the scene. You can also describe any figures generically (e.g. \"two people\" or \"three figures\").\n2. Load a black image with the same dimensions of your image into the Load Image nodes to use as the starting mask. \n3. Right click the Load Image node. Choose \"Open in Mask Editor.\"\n4. Paint the area where you want the feature/subject to appear  white. \n5. Enter a prompt for each masked area. \n6. Generate!\n\nUSAGE TIPS ---------------------------------------------------------------\n\n* When using Attention mode, masks will generally guide the placement of objects in the image, but the attention mechanisms may still blend concepts. \n* If the model doesn't seem to be picking up on the masked features, try lowering the strength of the base prompt (around 0.75). \n* If one feature/subject is more prominent than the others, LOWER the strength of that feature's conditioning (around 0.5 to 0.75) and/or RAISE the strength of other features (around 1.5).\n* To disable a masked region, set strength to 0. \n* If you get an error about tensor size mismatch, ensure that your empty masks are the same size as your image resolution. \n\nDownload example starting masks for common SDXL resolutions here: https://github.com/roblaughter/comfyui-workflows/docs/attention_couple.md"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 95,
+      "type": "ConditioningSetMask",
+      "pos": [
+        775,
+        1375
+      ],
+      "size": {
+        "0": 211.60000610351562,
+        "1": 102
+      },
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 146
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 167
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            154
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ConditioningSetMask"
+      },
+      "widgets_values": [
+        1,
+        "default"
+      ]
+    },
+    {
+      "id": 85,
+      "type": "LoadImage",
+      "pos": [
+        125,
+        425
+      ],
+      "size": {
+        "0": 325,
+        "1": 325
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            165
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "clipspace/clipspace-mask-63574.29999999702.png [input]",
+        "image"
+      ]
+    },
+    {
+      "id": 98,
+      "type": "LoadImage",
+      "pos": [
+        125,
+        1375
+      ],
+      "size": {
+        "0": 325,
+        "1": 325
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            167
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "clipspace/clipspace-mask-100908.59999999776.png [input]",
+        "image"
+      ]
+    },
+    {
+      "id": 67,
+      "type": "CLIPTextEncode",
+      "pos": [
+        125,
+        100
+      ],
+      "size": {
+        "0": 422.84503173828125,
+        "1": 164.31304931640625
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 113
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            117
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "Three figures sitting in a bar"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        475,
+        425
+      ],
+      "size": {
+        "0": 275,
+        "1": 150
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            20
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "Mark Hamill as Luke Skywalker"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 86,
+      "type": "LoadImage",
+      "pos": [
+        125,
+        900
+      ],
+      "size": {
+        "0": 325,
+        "1": 325
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            163
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "clipspace/clipspace-mask-88829.69999999925.png [input]",
+        "image"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "CLIPTextEncode",
+      "pos": [
+        475,
+        900
+      ],
+      "size": {
+        "0": 275,
+        "1": 150
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 10
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            18
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "Darth Vader"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 93,
+      "type": "CLIPTextEncode",
+      "pos": [
+        475,
+        1375
+      ],
+      "size": {
+        "0": 275,
+        "1": 150
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 143
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            146
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "C-3PO"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      3,
+      4,
+      1,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      5,
+      4,
+      1,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      8,
+      4,
+      2,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      10,
+      4,
+      1,
+      10,
+      0,
+      "CLIP"
+    ],
+    [
+      18,
+      10,
+      0,
+      15,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      20,
+      6,
+      0,
+      16,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      23,
+      15,
+      0,
+      17,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      24,
+      16,
+      0,
+      17,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      26,
+      7,
+      0,
+      18,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      29,
+      4,
+      0,
+      18,
+      0,
+      "MODEL"
+    ],
+    [
+      44,
+      23,
+      0,
+      5,
+      0,
+      "INT"
+    ],
+    [
+      45,
+      23,
+      1,
+      5,
+      1,
+      "INT"
+    ],
+    [
+      48,
+      8,
+      0,
+      26,
+      0,
+      "IMAGE"
+    ],
+    [
+      113,
+      4,
+      1,
+      67,
+      0,
+      "CLIP"
+    ],
+    [
+      117,
+      67,
+      0,
+      70,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      119,
+      69,
+      0,
+      70,
+      1,
+      "MASK"
+    ],
+    [
+      120,
+      72,
+      0,
+      71,
+      3,
+      "SAMPLER"
+    ],
+    [
+      121,
+      75,
+      0,
+      71,
+      4,
+      "SIGMAS"
+    ],
+    [
+      123,
+      18,
+      1,
+      71,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      124,
+      18,
+      2,
+      71,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      125,
+      5,
+      0,
+      71,
+      5,
+      "LATENT"
+    ],
+    [
+      126,
+      71,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      133,
+      23,
+      0,
+      69,
+      0,
+      "INT"
+    ],
+    [
+      134,
+      23,
+      1,
+      69,
+      1,
+      "INT"
+    ],
+    [
+      143,
+      4,
+      1,
+      93,
+      0,
+      "CLIP"
+    ],
+    [
+      146,
+      93,
+      0,
+      95,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      154,
+      95,
+      0,
+      100,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      157,
+      68,
+      0,
+      18,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      163,
+      86,
+      1,
+      15,
+      1,
+      "MASK"
+    ],
+    [
+      165,
+      85,
+      1,
+      16,
+      1,
+      "MASK"
+    ],
+    [
+      167,
+      98,
+      1,
+      95,
+      1,
+      "MASK"
+    ],
+    [
+      170,
+      100,
+      0,
+      68,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      171,
+      70,
+      0,
+      68,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      173,
+      17,
+      0,
+      100,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      182,
+      18,
+      0,
+      107,
+      0,
+      "MODEL"
+    ],
+    [
+      183,
+      107,
+      0,
+      71,
+      0,
+      "MODEL"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Prompt 1",
+      "bounding": [
+        75,
+        325,
+        950,
+        450
+      ],
+      "color": "#88A",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Prompt 2",
+      "bounding": [
+        75,
+        800,
+        950,
+        450
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Prompt 3",
+      "bounding": [
+        75,
+        1275,
+        950,
+        450
+      ],
+      "color": "#8AA",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Base Prompt",
+      "bounding": [
+        75,
+        -175,
+        950,
+        475
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Negative Prompt",
+      "bounding": [
+        75,
+        1750,
+        525,
+        325
+      ],
+      "color": "#A88",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Combine Conditionings",
+      "bounding": [
+        1200,
+        625,
+        725,
+        400
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Generate Image",
+      "bounding": [
+        2050,
+        325,
+        875,
+        1025
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.3499999999999994,
+      "offset": {
+        "0": 624.5284492057621,
+        "1": 484.7641709048639
+      }
+    }
+  },
+  "version": 0.4
+}
