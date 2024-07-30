@@ -27,4 +27,4 @@ Starter masks are simple black PNGs in common SDXL resolutions.
 
 Download example starting masks for common SDXL resolutions here.
 
-[Download Starter Masks &raquo;](https://github.com/roblaughter/comfyui-workflows/docs/masks.zip)
+[Download Starter Masks &raquo;](https://github.com/roblaughter/comfyui-workflows/blob/main/docs/masks.zip)
