@@ -1,5 +1,7 @@
 # Using the Attention Couple Workflow
 
+[Download the workflow here &raquo;](https://github.com/roblaughter/comfyui-workflows/blob/main/AttentionCouple.json)
+
 This workflow gives you control over the composition of the generated image by applying sub-prompts to specific areas of the image with masking. 
 
 ## Basic Instructions
